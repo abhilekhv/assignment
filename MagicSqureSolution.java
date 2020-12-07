@@ -2,8 +2,10 @@ public class MagicSqureSolution {
 
 	public int getMinimumCost(int[][] input) {
 
+		// Max possible sum
 		int[] sum = new int[8];
 
+		// All possible magic squares
 		int[][] magicSquare0 = { { 8, 1, 6 }, { 3, 5, 7 }, { 4, 9, 2 } };// 1
 		int[][] magicSquare1 = { { 6, 1, 8 }, { 7, 5, 3 }, { 2, 9, 4 } };// 2
 		int[][] magicSquare2 = { { 4, 9, 2 }, { 3, 5, 7 }, { 8, 1, 6 } };// 3
@@ -13,6 +15,7 @@ public class MagicSqureSolution {
 		int[][] magicSquare6 = { { 6, 7, 2 }, { 1, 5, 9 }, { 8, 3, 4 } };// 7
 		int[][] magicSquare7 = { { 2, 7, 6 }, { 9, 5, 1 }, { 4, 3, 8 } };// 8
 
+		// traverse entire matrix and get all possible sum
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				sum[0] += Math.abs(input[i][j] - magicSquare0[i][j]);
@@ -26,6 +29,7 @@ public class MagicSqureSolution {
 			}
 		}
 
+		// extract minimum sum
 		int minCost = sum[0];
 		for (int permutation = 1; permutation < 8; permutation++) {
 			if (minCost > sum[permutation])
